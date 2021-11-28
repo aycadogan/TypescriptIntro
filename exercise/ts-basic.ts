@@ -25,7 +25,8 @@ const exerciseOne = () => {
     // • Add an explicit type annotation to `pie`
     // • Try assigning invalid types, for fun
   
-    let pie = 'blueberry';
+    let pie:string;
+    pie = 'blueberry';
   
     console.log('[Exercise 1.2]', `I like to eat ${pie}-flavored pie.`);
   
@@ -33,7 +34,7 @@ const exerciseOne = () => {
     // // Instructions:
     // // • Inspect the error, then fix it.
   
-    let isMark: boolean = true;
+    let isMark: boolean = false;
   
     console.log('[Exercise 1.3]', `${isMark ? 'Oh, hi Mark' : 'Who are you?'}`);
   
@@ -48,11 +49,11 @@ const exerciseOne = () => {
     const binary:number = 0b1010011010;
     const octal:number = 0o744;
     const negZero:number = -0;
-    const actuallyNumber:string = "NaN";
+    const actuallyNumber:number = NaN;
     const largestNumber:number = Number.MAX_VALUE;
-    const mostBiglyNumber:string = "Infinity";
+    const mostBiglyNumber:number = Infinity;
   
-    const members: any[] = [
+    const members: number[] = [
       integer,
       float,
       hex,
@@ -64,7 +65,7 @@ const exerciseOne = () => {
       mostBiglyNumber
     ];
   
-    members[0] = '12345';
+    members[0] = +'12345';
   
     console.log('[Exercise 1.4]', members);
   
@@ -73,27 +74,30 @@ const exerciseOne = () => {
     // // • Add type annotations (as explicit as possible)
     // // • Fix errors (if applicable)
   
-    //const sequence: any[] = Array.from(Array(10).keys()); 
+    const sequence: number[] = [1,2,3,4,5,6,7,8,9]; 
     const animals: string[] = ['pangolin', 'aardvark', 'echidna', 'binturong'];
-    const stringsAndNumbers: any[] = [1, 'one', 2, 'two', 3, 'three'];
-    const allMyArrays: any[] = [ animals, stringsAndNumbers];
+    const stringsAndNumbers: (string|number)[] = [1, 'one', 2, 'two', 3, 'three'];
+    const allMyArrays: (number | string)[][] = [ sequence,animals, stringsAndNumbers];
   
+    // [][] -> 2d array
+    // Array <Array<number | string>> -> generic
+
     console.log('Exercise 1.5', allMyArrays);
   
-    // // ======== Exercise 1.6 ========
-    // // Goal:
-    // // • Add type annotations (as explicit as possible)
-    // // • Fix errors (if applicable)
+    // ======== Exercise 1.6 ========
+    // Goal:
+    // • Add type annotations (as explicit as possible)
+    // • Fix errors (if applicable)
   
-    // // We want to represent an inventoryItem as a structure where
-    // // the first entry is the item name and the second is the quantity
+    // We want to represent an inventoryItem as a structure where
+    // the first entry is the item name and the second is the quantity
   
-    const inventoryItem : any[]= ['fidget wibbit', 11];
+    const inventoryItem : [string, number]= ['fidget wibbit', 11];
   
     // // later we destructure it
     const [name, qty]= inventoryItem;
   
-    const msg : string = addInventory(name, qty);
+    const msg = addInventory(name, qty);
   
     console.log('[Exercise 1.6]', msg);
   

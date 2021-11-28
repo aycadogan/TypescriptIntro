@@ -19,12 +19,13 @@ var exerciseOne = function () {
     // • Inspect type of `pie`
     // • Add an explicit type annotation to `pie`
     // • Try assigning invalid types, for fun
-    var pie = 'blueberry';
+    var pie;
+    pie = 'blueberry';
     console.log('[Exercise 1.2]', "I like to eat ".concat(pie, "-flavored pie."));
     // // ======== Exercise 1.3 ========
     // // Instructions:
     // // • Inspect the error, then fix it.
-    var isMark = true;
+    var isMark = false;
     console.log('[Exercise 1.3]', "".concat(isMark ? 'Oh, hi Mark' : 'Who are you?'));
     // // ======== Exercise 1.4 ========
     // // Instructions:
@@ -36,9 +37,9 @@ var exerciseOne = function () {
     var binary = 666;
     var octal = 484;
     var negZero = -0;
-    var actuallyNumber = "NaN";
+    var actuallyNumber = NaN;
     var largestNumber = Number.MAX_VALUE;
-    var mostBiglyNumber = "Infinity";
+    var mostBiglyNumber = Infinity;
     var members = [
         integer,
         float,
@@ -50,23 +51,25 @@ var exerciseOne = function () {
         largestNumber,
         mostBiglyNumber
     ];
-    members[0] = '12345';
+    members[0] = +'12345';
     console.log('[Exercise 1.4]', members);
     // // ======== Exercise 1.5 ========
     // // Instructions:
     // // • Add type annotations (as explicit as possible)
     // // • Fix errors (if applicable)
-    //const sequence: any[] = Array.from(Array(10).keys()); 
+    var sequence = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     var animals = ['pangolin', 'aardvark', 'echidna', 'binturong'];
     var stringsAndNumbers = [1, 'one', 2, 'two', 3, 'three'];
-    var allMyArrays = [animals, stringsAndNumbers];
+    var allMyArrays = [sequence, animals, stringsAndNumbers];
+    // [][] -> 2d array
+    // Array <Array<number | string>> -> generic
     console.log('Exercise 1.5', allMyArrays);
-    // // ======== Exercise 1.6 ========
-    // // Goal:
-    // // • Add type annotations (as explicit as possible)
-    // // • Fix errors (if applicable)
-    // // We want to represent an inventoryItem as a structure where
-    // // the first entry is the item name and the second is the quantity
+    // ======== Exercise 1.6 ========
+    // Goal:
+    // • Add type annotations (as explicit as possible)
+    // • Fix errors (if applicable)
+    // We want to represent an inventoryItem as a structure where
+    // the first entry is the item name and the second is the quantity
     var inventoryItem = ['fidget wibbit', 11];
     // // later we destructure it
     var name = inventoryItem[0], qty = inventoryItem[1];
