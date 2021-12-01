@@ -52,44 +52,72 @@ const ExerciseTwo = () => {
     // • Fix whatever is wrong with `tampa`
   
     // // [do not edit] (pretend this is coming from external `foo.d.ts` lib)
+    interface City {
+      name: string
+    }
+    // // [/do not edit]
+
+    interface Coords{
+      latitude : number;
+      longitude : number;
+    }
+
+    // interface Place extends City{
+    //   coords: Coords
+    // }
+
+    interface City{
+      coords: Coords
+    }
+
     // interface City {
-    //   name: string
+    //   zipcode: string
     // }
-    // // // [/do not edit]
+  
+    const montreal = {
 
-    // interface Coords{
-    //   latitude : number;
-    //   longitude : number;
-    // }
+      coords: {
+        latitude: 42.332,
+        longitude: -73.324,
+      },
+      name: 'Montréal',
+    } 
   
-    // const montreal = {
+    const tampa = {
+      coords: {
+        latitude: 27.9478,
+        longitude: -82.4584,
+      },
+      name: 'Tampa',
+    }
 
-    //   coords: {
-    //     latitude: 42.332,
-    //     longitude: -73.324,
-    //   },
-    //   name: 'Montréal',
-    // } 
-  
-    // const tampa = {
-    //   coords: {
-    //     latitude: '27.9478',
-    //     longitude: '-82.4584',
-    //   },
-    //   name: 'Tampa',
+    // interface City{
+    //   name: string;
+    //   coords: Coords;
+    //   zipcode: string;
     // }
-  
-    // function getCityInfo(city: City) {
+
+    // string | number <---- union
+    // string & number <---- intersection
+
+    function getCityInfo(city: City) {
+      const coords = `(${city.coords.latitude.toFixed(
+        3
+      )}, ${city.coords.longitude.toFixed(3)})`
+      return `${city.name.toUpperCase()} is located at ${coords}.`
+    }
+
+    // function getCityInfo(city: City & Coords) {
     //   const coords = `(${city.coords.latitude.toFixed(
     //     3
     //   )}, ${city.coords.longitude.toFixed(3)})`
     //   return `${city.name.toUpperCase()} is located at ${coords}.`
     // }
   
-    // console.log(
-    //   '[Exercise 2.3]',
-    //   `${getCityInfo(montreal)} \n\n ${getCityInfo(tampa)}`
-    // )
+    console.log(
+      '[Exercise 2.3]',
+      `${getCityInfo(montreal)} \n\n ${getCityInfo(tampa)}`
+    )
   
     // // ======== Exercise 2.4 ========
     // // The purpose of this exercise is simply to illustrate a use of `readonly`
